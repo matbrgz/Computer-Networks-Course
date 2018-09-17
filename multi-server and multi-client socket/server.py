@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+__author__ = "Matheus Rocha Vieira"
+__version__ = "0.0.1"
+__license__ = "GPL-3.0"
+
 import os
 from jsonsocket import Server, Client
 
@@ -60,5 +65,3 @@ while True:
 	if (data['act'] != 'receive') & (data['act'] != 'send'):
 		server.send('ação desconhecida')
 		print('ação desconhecida')
-
-
