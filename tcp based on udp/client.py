@@ -8,7 +8,6 @@ import time
 
 ip = "127.0.0.1"
 port = 8888
-bufferSize = 1024
 
 serverAddressPort = (localIP,localPort)
 bufferSize = 1024
