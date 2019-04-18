@@ -4,7 +4,7 @@ __version__ = "0.0.1"
 __license__ = "GPL-3.0"
 
 import os
-from jsonsocket import Client, Server
+from jsonsocket import Client
 
 srvlist = {
 	"ufv":
