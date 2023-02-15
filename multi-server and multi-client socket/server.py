@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 __author__ = "Matheus Rocha Vieira"
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 __license__ = "GPL-3.0"
 
 import os
@@ -21,7 +21,9 @@ srvlist = {
 	}
 }
 
-serverDomain = input('University:')
+usrList = {""}
+
+serverDomain = input('University: ')
 host = srvlist[serverDomain]['ip']
 port = srvlist[serverDomain]['port']
 
@@ -30,16 +32,12 @@ server = Server(host, port)
 msgList = []
 
 while True:
-	os.system("clear")
-	#print('\tNAME: ' + str(server.socket..gethostname()))
-	#print('\tIP: ' + str(server.socket.gethostbyname(server.socket.gethostname())))
-	#print('\tPORT:' + str(port))
-	#print('\tSERVER: ' + str(emitterDomain))
-	#server.accept()
-	#data = server.recv()
+	print('UNIVERSITY: ' + str(srvlist[serverDomain]['id']))
+	print('HOST: ' + str(host))
+	print('PORT: ' + str(port))
 	data = server.accept().recv()
 	print('Msg Memory: ' + str(msgList))
-	print('Socket Receive Data: '+str(data))
+	print('Socket Receive Data: ' + str(data))
 	if data['act'] == 'send':
 		server.send({'status': '200'})
 		if data['recipientDomain'] == serverDomain:
@@ -56,12 +54,12 @@ while True:
 			else:
 				print('Transfered Msg Error')
 	if data['act'] == 'receive':
-		requesterMsg = []
+		requesterMsgList = []
 		for i in msgList:
 			if i['recipientUser'] == data['requesterUser']:
-				requesterMsg.append(i)
+				requesterMsgList.append(i)
 				msgList.remove(i)
-		server.send(requesterMsg)
+		server.send(requesterMsgList)
 	if (data['act'] != 'receive') & (data['act'] != 'send'):
 		server.send('ação desconhecida')
 		print('ação desconhecida')
